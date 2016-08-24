@@ -5,15 +5,28 @@ pbreak = mbreak + 1
  font-family monospace
  white-space pre
 html
- background-color #28362A
+ --background #28362A
+ background var(--background)
  height 100%
 body
  color #EEE
+ height 100%
  @media (min-width pbreak)
-  display flex
+  &:not(.notflexing)
+   display flex
  margin 0
  padding 0 8px
  box-shadow inset bshadow
+ >main
+  max-width var(--content-max-width)
+  margin var(--content-margin)
+  text-align var(--text-align)
+  font var(--font-set)
+  background var(--background)
+  color var(--text-colour)
+  >h1:first-child
+   margin-top 0
+   padding-top 1em
 :link,
 :visited
  color #88f
