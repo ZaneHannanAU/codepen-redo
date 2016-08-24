@@ -1,0 +1,20 @@
+include perspective-text
+-
+ var regexwordsplit = /\s*\n\s*/;
+ var Words = "\nCSS Only\n Perspective\n Text Effect\n by\n James\n Bosworth\n|\u2003 Modified by\n| ZaneHannanAU"
+ // var Words = "\nCSS Only\n Perspective\n Text Effect\n by\n James\n Bosworth\n 	\u239BModified by \u239E\n\u239DZaneHannanAU\u23A0" // For UTF-8 only
+ var mainfiles = ['perspective-text.styl','perspective-text.pug']
+ var relative = '../../'
+ var extra = ['index.pug']
+html
+ head
+  meta(charset='UTF-8')
+  meta(name="viewport" content="width=device-width")
+  title Perspective text
+  //- style
+  //-  include reset.css
+  link(rel="stylesheet" href="perspective-text.css")
+  include ../../commonset
+ body
+  +perspective-text(Words,regexwordsplit)
+  +repolink(mainfiles,relative,extra)

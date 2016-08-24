@@ -1,0 +1,28 @@
+bshadow = 0 0 10px #eee
+mbreak = 640px
+pbreak = mbreak + 1
+.mono
+ font-family monospace
+ white-space pre
+html
+ background-color #28362A
+ height 100%
+body
+ color #EEE
+ @media (min-width pbreak)
+  display flex
+ margin 0
+ padding 0 8px
+ box-shadow inset bshadow
+:link,
+:visited
+ color #88f
+hr
+ &.nomrg
+  margin 0 1ex
+ border 1px solid #0000
+ box-shadow bshadow
+.via
+ text-align center
+ font-weight bold
+ font-variant small-caps

@@ -1,0 +1,9 @@
+mixin perspective-text(text,split)
+ -
+  var plaintext = text.split(split)
+  var lines = text.split(split)
+ ul(aria-label=text data-lines-amt=lines.length).perspective-text&attributes(attributes)
+  for line, index in lines
+   li(aria-hidden=true).perspective-line
+    p= lines[index]
+    p= lines[index+1]

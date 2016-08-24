@@ -1,0 +1,27 @@
+style
+ include commonset.css
+mixin repolink(mainfiles,relative,extra)
+ hr.nomrg
+ dl
+  if mainfiles
+   dt This file is composed of
+   for file, index in mainfiles
+    if index+1 == mainfiles.length
+     |and
+    dd
+     a(href=file)
+      code= file
+  if extra
+   dt Extra content and/or files.
+    br
+    |May also help with setting up.
+   for item in extra
+    dd
+     a(href=item)
+      code= item
+   if relative
+    dt.via
+     hr
+     |Return to the main repository
+    dd.via
+     a(href=relative) via this link

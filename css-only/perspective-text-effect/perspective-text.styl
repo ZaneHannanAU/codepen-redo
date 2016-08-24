@@ -1,0 +1,107 @@
+mbreak = 640px
+pbreak = mbreak + 1
+/*
+** Change this if you need to modify
+** the amount of lines displayed
+*/
+ptextl_totallines ?= 10
+
+
+/*
+** Leave these unless you want
+** to open a whole can of worms
+*/
+// @media (min-width pbreak)
+ptextl_fsize ?= 68px
+ptextl_leftoffset ?= 29px
+ptextl_clipheight ?= 50px
+ptextl_lineheight ?= ptextl_clipheight - 5px
+ptextl_margin ?= 0 auto
+// @media (max-width mbreak)
+ptextm_fsize ?= 20px
+ptextm_leftoffset ?= 11px
+ptextm_clipheight ?= 19px
+ptextm_lineheight ?= ptextm_clipheight - 3px
+ptextm_margin ?= 0 -2em (4 * ptextm_fsize) -1em
+
+/*
+** Apply styles to the parent element
+*/
+@media (min-width pbreak)
+ .perspective-text
+  // @media (max-width mbreak)
+  //  margin ptextm_margin
+  // @media (min-width pbreak)
+  margin ptextl_margin
+  list-style none
+  position relative
+  padding 40px 0
+  font-family 'Source Sans Pro', Helvetica, Arial, sans-serif
+  // @media (max-width mbreak)
+  //  font-size ptextm_fsize
+  // @media (min-width pbreak)
+  font-size ptextl_fsize
+  font-weight 900
+  letter-spacing -2px
+  text-transform uppercase
+  // Sort out nasty text fuzz
+  transform translate3d(0, 0, 0)
+  -webkit-font-smoothing antialiased
+  -webkit-font-kerning normal
+  -webkit-text-size-adjust 100%
+  /*
+  ** Apply common styles to each line of text
+  */
+  .perspective-line
+   // @media (max-width mbreak)
+   //  height ptextm_clipheight
+   // @media (min-width pbreak)
+   height ptextl_clipheight
+   overflow hidden
+   position relative
+   // Change the perspective of each alternating line
+   &:nth-child(odd)
+    transform skew(60deg, -30deg) scaleY(2 / 3)
+   &:nth-child(even)
+    transform skew(0deg, -30deg) scaleY(4 / 3)
+   // Loop over the total lines and apply a left offset
+   for i in (1.. ptextl_totallines+1)
+    &:nth-child({i})
+     // @media (min-width pbreak)
+     left ptextl_leftoffset * i
+     // @media (max-width mbreak)
+     //  left ptextm_leftoffset * i
+   /*
+   ** Fine-grained text styles
+   */
+   p
+    // @media (min-width pbreak)
+    height ptextl_clipheight
+    line-height ptextl_lineheight
+    // @media (max-width mbreak)
+    //  height ptextm_clipheight
+    //  line-height ptextm_lineheight
+    padding 0 0
+    transition all .4s ease-in-out
+    transform translate3d(0, 0, 0)
+    vertical-align top
+    white-space nowrap
+    margin 0
+   /*
+   ** The hover interaction
+   */
+  &:hover
+   p
+    // @media (max-width mbreak)
+    //  transform translate3d(0, -(ptextm_clipheight), 0)
+    // @media (min-width pbreak)
+    transform translate3d(0, -(ptextl_clipheight), 0)
+@media (max-width mbreak)
+ .perspective-text
+  &::before
+   content attr(aria-label)
+   white-space pre-wrap
+  transform skew(0deg, -30deg)
+  margin ptextm_margin
+  *
+   display none
