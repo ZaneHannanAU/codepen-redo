@@ -6,6 +6,7 @@ include perspective-text
  var mainfiles = ['perspective-text.styl','perspective-text.pug']
  var relative = '../../'
  var extra = ['index.pug']
+ var src = 'https://codepen.io/bosworthco/pen/YWBLpR'
 html
  head
   meta(charset='UTF-8')
@@ -17,4 +18,4 @@ html
   include ../../commonset
  body
   +perspective-text(Words,regexwordsplit)
-  +repolink(mainfiles,relative,extra)
+  +repolink(mainfiles,relative,extra,src)

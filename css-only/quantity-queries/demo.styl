@@ -1,0 +1,46 @@
+bshadow = 0 0 10px #eee
+mbreak = 640px
+pbreak = mbreak + 1
+*
+ background inherit
+.wrapper
+ text-align center
+ margin 0 auto
+ max-width 800px
+ &:not(:hover)
+  img
+   mix-blend-mode luminosity
+ @media (min-width pbreak)
+  position sticky
+  top 0
+h1
+ font-size 1.6em
+ text-align center
+.post-image
+ img
+  max-width 100%
+  display block
+  transition .5s
+figure
+ margin-bottom 1.8em
+ display flex
+ justify-content space-between
+ @import 'quantity-queries'
+ +quantity(2,'.post-image')
+  flex 0 1 48%
+ +quantity(3,'.post-image')
+  flex 0 1 31%
+// .post-image
+//  quantity = 2
+//  &:nth-last-child(n+{quantity})
+//   &:nth-last-child(-n+{quantity})
+//    &:first-child
+//     &,
+//     ~ .post-image
+//      &
+//       // If we have 2 images in the row change the width to about half...
+//       flex 0 1 48%
+//      quantity = 3
+//      &
+//       // if we have three images in the row change width to about a third
+//       flex 0 1 31%

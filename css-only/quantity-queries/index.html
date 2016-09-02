@@ -1,0 +1,31 @@
+<html><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><title>Quantity Queries</title><style>*{background:inherit}.wrapper{text-align:center;margin:0 auto;max-width:800px;}.wrapper:not(:hover) img{mix-blend-mode:luminosity}@media (min-width:641px){.wrapper{position:sticky;top:0}}h1{font-size:1.6em;text-align:center}.post-image img{max-width:100%;display:block;transition:.5s}figure{margin-bottom:1.8em;display:flex;justify-content:space-between;}figure .post-image:nth-last-child(n+2):nth-last-child(-n+2):first-child,figure .post-image:nth-last-child(n+2):nth-last-child(-n+2):first-child ~ .post-image{flex:0 1 48%}figure .post-image:nth-last-child(n+3):nth-last-child(-n+3):first-child,figure .post-image:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .post-image{flex:0 1 31%}</style><style>.mono{font-family:monospace;white-space:pre}pre{white-space:pre-wrap}:root{--background:#28362a;--text-colour:#eee;--unvisited-link-colour:#5f5;--visited-link-colour:#f55;background:var(--background);color:var(--text-colour);min-height:100%}body{margin:0;padding:0 8px;}@media not print{body{min-height:100%}}@media (min-width:641px){body:not(.notflexing){display:flex;align-items:flex-start}}body::after{content:'';position:fixed;left:0;top:0;height:100%;width:100%;box-shadow:inset 0 0 10px;pointer-events:none}body >main{max-width:var(--content-max-width);margin:var(--content-margin);text-align:var(--text-align);font:var(--font-set);background:var(--background);color:var(--text-colour);}body >main >h1:first-child{margin-top:0;padding-top:1em}:link{color:var(--unvisited-link-colour)}:visited{color:var(--visited-link-colour)}hr{border:1px solid rgba(0,0,0,0);box-shadow:0 0 10px}hr.nomrg{margin:0 1ex;align-self:stretch}.via{text-align:center;font-weight:bold;font-variant:small-caps}.repoinfo{position:sticky;top:1em;max-width:300px;margin:1ex auto}.breakall{word-break:break-all}</style></head><body><div class="explain"><h1>CSS quantity queries (stylus)</h1><p>Call upon via</p><pre>@import 'quantity-queries' // The main call
+selector
+ amount = 3
+ +quantity(amount,'selector')
+  rule to apply at each
+tr
+ amount = 5
+ for tabular in 'td,th'
+  +quantity(amount,tabular)
+   width (100% / amount)
+</pre><p>Produces</p><pre>selector selector:nth-last-child(n+3):nth-last-child(-n+3):first-child,
+selector selector:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ selector {
+  rule: to apply at each;
+}
+tr td:nth-last-child(n+5):nth-last-child(-n+5):first-child,
+tr th:nth-last-child(n+5):nth-last-child(-n+5):first-child,
+tr td:nth-last-child(n+5):nth-last-child(-n+5):first-child ~ td,
+tr th:nth-last-child(n+5):nth-last-child(-n+5):first-child ~ td,
+tr td:nth-last-child(n+5):nth-last-child(-n+5):first-child th,
+tr th:nth-last-child(n+5):nth-last-child(-n+5):first-child th {
+  width: 20%;
+}
+</pre><p>The mixin:</p><pre>quantity(quantity,orig)
+ {orig}
+  &:nth-last-child(n+{quantity})
+   &:nth-last-child(-n+{quantity})
+    &:first-child
+     &,
+     ~ {orig}
+      {block}
+</pre></div><hr class="nomrg"/><div class="wrapper"><h1>Example</h1><div class="alt-text">(hover to view saturated images)</div><figure><div class="post-image"><img src="https://unsplash.it/900/400/?random" alt="A demonstration image"/></div></figure><figure><div class="post-image"><img src="https://unsplash.it/400/300/?random" alt="A demonstration image"/></div><div class="post-image"><img src="https://unsplash.it/800/600/?random" alt="A demonstration image"/></div></figure><figure><div class="post-image"><img src="https://unsplash.it/375/250/?random" alt="A demonstration image"/></div><div class="post-image"><img src="https://unsplash.it/396/264/?random" alt="A demonstration image"/></div><div class="post-image"><img src="https://unsplash.it/399/266/?random" alt="A demonstration image"/></div></figure></div><hr class="nomrg"/><dl class="repoinfo"><dt>This file is composed of</dt><dd><a href="quantity-queries.styl"><code>quantity-queries.styl</code></a></dd><dt>Extra content and/or files.<br/>May also help with setting up.</dt><dd><a href="index.pug"><code>index.pug</code></a></dd><dd><a href="demo.styl"><code>demo.styl</code></a></dd><dt class="via"><hr/>Return to the main repository</dt><dd class="via"><a href="../../">via this link</a></dd><dt>This has been modified from</dt><dd><a class="breakall" href="https://codepen.io/luclemo/pen/VvROXO">https://codepen.io/luclemo/pen/VvROXO</a></dd></dl></body></html>

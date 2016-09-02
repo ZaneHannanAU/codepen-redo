@@ -1,22 +1,37 @@
-bshadow = 0 0 10px #eee
+bshadow = 0 0 10px
 mbreak = 640px
 pbreak = mbreak + 1
 .mono
  font-family monospace
  white-space pre
-html
+pre
+ white-space pre-wrap
+:root
  --background #28362A
+ --text-colour #eee
+ --unvisited-link-colour #5f5
+ --visited-link-colour #f55
  background var(--background)
- height 100%
+ color var(--text-colour)
+ min-height 100%
 body
- color #EEE
- height 100%
+ @media not print
+  min-height 100%
  @media (min-width pbreak)
   &:not(.notflexing)
    display flex
+   align-items flex-start
  margin 0
  padding 0 8px
- box-shadow inset bshadow
+ &::after
+  content ''
+  position fixed
+  left 0
+  top 0
+  height 100%
+  width 100%
+  box-shadow inset bshadow
+  pointer-events none
  >main
   max-width var(--content-max-width)
   margin var(--content-margin)
@@ -27,15 +42,25 @@ body
   >h1:first-child
    margin-top 0
    padding-top 1em
-:link,
+:link
+ color var(--unvisited-link-colour)
 :visited
- color #88f
+ color var(--visited-link-colour)
 hr
  &.nomrg
   margin 0 1ex
+  align-self stretch
  border 1px solid #0000
  box-shadow bshadow
 .via
  text-align center
  font-weight bold
  font-variant small-caps
+.repoinfo
+ position sticky
+ top 1em
+ max-width 300px
+ margin 1ex auto
+ // align-self center
+.breakall
+ word-break break-all

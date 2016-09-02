@@ -1,13 +1,14 @@
 style
  include commonset.css
-mixin repolink(mainfiles,relative,extra)
+mixin repolink(mainfiles,relative,extra,src)
  hr.nomrg
- dl
+ dl.repoinfo
   if mainfiles
    dt This file is composed of
    for file, index in mainfiles
     if index+1 == mainfiles.length
-     |and
+     unless mainfiles.length == 1
+      |and
     dd
      a(href=file)
       code= file
@@ -25,3 +26,7 @@ mixin repolink(mainfiles,relative,extra)
      |Return to the main repository
     dd.via
      a(href=relative) via this link
+  if src
+   dt This has been modified from
+   dd
+    a(href=src).breakall= src

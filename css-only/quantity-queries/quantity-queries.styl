@@ -1,0 +1,8 @@
+quantity(quantity,orig)
+ {orig}
+  &:nth-last-child(n+{quantity})
+   &:nth-last-child(-n+{quantity})
+    &:first-child
+     &,
+     ~ {orig}
+      {block}

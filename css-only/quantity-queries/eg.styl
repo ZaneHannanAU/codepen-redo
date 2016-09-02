@@ -1,0 +1,10 @@
+@import 'quantity-queries' // The main call
+selector
+ amount = 3
+ +quantity(amount,'selector')
+  rule to apply at each
+tr
+ amount = 5
+ for tabular in 'td,th'
+  +quantity(amount,tabular)
+   width (100% / amount)

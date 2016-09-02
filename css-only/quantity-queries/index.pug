@@ -1,0 +1,38 @@
+-
+ mainfiles = ['quantity-queries.styl']
+ relative = '../../'
+ extra = ['index.pug','demo.styl']
+ src= 'https://codepen.io/luclemo/pen/VvROXO'
+ imagerands = [[[900,400]],[[400,300],[800,600]],[[375,250],[396,264],[399,266]]]
+html
+ head
+  meta(charset='UTF-8')
+  meta(name="viewport" content="width=device-width")
+  title Quantity Queries
+  style
+   include demo.css
+  //- link(rel="stylesheet" href="demo.css")
+
+  include ../../commonset
+ body
+  .explain
+   h1 CSS quantity queries (stylus)
+   p Call upon via
+   pre
+    include eg.styl
+   p Produces
+   pre
+    include eg.css
+   p The mixin:
+   pre
+    include quantity-queries.styl
+  hr.nomrg
+  .wrapper
+   h1 Example
+   .alt-text (hover to view saturated images)
+   for row in imagerands
+    figure
+     for size in row
+      .post-image
+       img(src='https://unsplash.it/'+size[0]+'/'+size[1]+'/?random' alt='A demonstration image')
+  +repolink(mainfiles,relative,extra,src)

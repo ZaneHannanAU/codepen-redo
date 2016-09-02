@@ -1,0 +1,12 @@
+selector selector:nth-last-child(n+3):nth-last-child(-n+3):first-child,
+selector selector:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ selector {
+  rule: to apply at each;
+}
+tr td:nth-last-child(n+5):nth-last-child(-n+5):first-child,
+tr th:nth-last-child(n+5):nth-last-child(-n+5):first-child,
+tr td:nth-last-child(n+5):nth-last-child(-n+5):first-child ~ td,
+tr th:nth-last-child(n+5):nth-last-child(-n+5):first-child ~ td,
+tr td:nth-last-child(n+5):nth-last-child(-n+5):first-child th,
+tr th:nth-last-child(n+5):nth-last-child(-n+5):first-child th {
+  width: 20%;
+}
